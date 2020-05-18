@@ -24,4 +24,13 @@
         android:layout_centerInParent="true"
         android:textAllCaps="false" />
 
+
+    <Button
+        android:id="@+id/btnExitApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="退出APP"
+        android:layout_below="@id/btnJump"/>
+
 </RelativeLayout>

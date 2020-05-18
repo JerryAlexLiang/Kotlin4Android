@@ -5,11 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
+import com.liang.kotlin4android.utils.ActivityBox
 import kotlinx.android.synthetic.main.activity_second.*
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity : BaseActivity() {
 
     companion object {
 
@@ -50,6 +51,10 @@ class SecondActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }
+        }
+
+        btnExitApp.setOnClickListener {
+            ActivityBox.finishAll()
         }
     }
 

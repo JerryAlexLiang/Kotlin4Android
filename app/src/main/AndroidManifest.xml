@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity_01.SecondActivity"></activity>
+        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".activity_01.SecondActivity" />
         <activity android:name=".MainActivity">
 
             <!-- <intent-filter> -->

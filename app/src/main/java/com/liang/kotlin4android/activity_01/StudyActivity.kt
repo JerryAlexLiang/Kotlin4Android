@@ -2,14 +2,11 @@ package com.liang.kotlin4android.activity_01
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
+import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
 import kotlinx.android.synthetic.main.activity_study.*
 
@@ -18,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_study.*
  * 描述: Activity的学习
  * 作者: liangyang
  */
-class StudyActivity : AppCompatActivity() {
+class StudyActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
