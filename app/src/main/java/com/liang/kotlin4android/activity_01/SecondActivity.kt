@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
@@ -11,6 +12,8 @@ import com.liang.kotlin4android.utils.ActivityBox
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : BaseActivity() {
+
+    private val tag = SecondActivity::class.java.simpleName
 
     companion object {
 
@@ -35,6 +38,8 @@ class SecondActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+
+        Log.d(tag,"执行onCreate")
 
         //接收传递来的数据
         val stringExtra = intent.getStringExtra("extra_data")
@@ -68,4 +73,35 @@ class SecondActivity : BaseActivity() {
 //            finish()
 //        }
 //    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(tag,"执行onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(tag,"执行onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(tag,"执行onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(tag,"执行onStop()")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(tag,"执行onDestroy()")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(tag,"执行onRestart()")
+    }
+
 }

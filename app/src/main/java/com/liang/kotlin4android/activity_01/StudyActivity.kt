@@ -3,6 +3,7 @@ package com.liang.kotlin4android.activity_01
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -17,9 +18,19 @@ import kotlinx.android.synthetic.main.activity_study.*
  */
 class StudyActivity : BaseActivity() {
 
+    private val tag = StudyActivity::class.java.simpleName
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_study)
+
+        Log.d(tag,"执行onCreate()")
+
+        //Activity的生命周期
+        if (savedInstanceState != null) {
+            val tempData = savedInstanceState.getString("data_key")
+            Log.d(tag, "还原数据: $tempData")
+        }
 
         btn_button.setOnClickListener {
             //            Toast.makeText(this, "click", Toast.LENGTH_SHORT).show()
@@ -41,9 +52,9 @@ class StudyActivity : BaseActivity() {
 
             val contentOne = etContentOne.text.toString().trim()
             val contentTwo = etContentTwo.text.toString().trim()
-            if (contentOne.isEmpty()||contentTwo.isEmpty()){
-                Toast.makeText(this,"请输入内容",Toast.LENGTH_SHORT).show()
-            }else{
+            if (contentOne.isEmpty() || contentTwo.isEmpty()) {
+                Toast.makeText(this, "请输入内容", Toast.LENGTH_SHORT).show()
+            } else {
                 SecondActivity.actionStart(this, contentOne, contentTwo)
             }
         }
@@ -76,6 +87,43 @@ class StudyActivity : BaseActivity() {
                 Toast.makeText(this, "接收传递数据: $stringExtra", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(tag,"执行onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(tag,"执行onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(tag,"执行onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(tag,"执行onStop()")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(tag,"执行onDestroy()")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(tag,"执行onRestart()")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val tempData = "onSaveInstanceState"
+        outState.putString("data_key",tempData)
+        Log.d(tag,"执行onSaveInstanceState()")
     }
 
 }
