@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".BaseActivity"></activity>
+
+        <activity android:name=".BaseActivity" />
         <activity android:name=".activity_01.SecondActivity" />
         <activity android:name=".MainActivity">
 
@@ -23,6 +24,14 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".activity_01.StudyActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity android:name=".widget_02.ListViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
