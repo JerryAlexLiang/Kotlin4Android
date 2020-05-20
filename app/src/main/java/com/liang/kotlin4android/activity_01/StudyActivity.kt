@@ -1,11 +1,14 @@
 package com.liang.kotlin4android.activity_01
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
@@ -16,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_study.*
  * 描述: Activity的学习
  * 作者: liangyang
  */
-class StudyActivity : BaseActivity() {
+class StudyActivity : BaseActivity(), View.OnClickListener {
 
     private val tag = StudyActivity::class.java.simpleName
 
@@ -24,7 +27,9 @@ class StudyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_study)
 
-        Log.d(tag,"执行onCreate()")
+        title = "Widget"
+
+        Log.d(tag, "执行onCreate()")
 
         //Activity的生命周期
         if (savedInstanceState != null) {
@@ -58,6 +63,36 @@ class StudyActivity : BaseActivity() {
                 SecondActivity.actionStart(this, contentOne, contentTwo)
             }
         }
+
+        ivImage.tag = 1
+
+        btnProgressBar.setOnClickListener(this)
+        btnImageView.setOnClickListener(this)
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btnProgressBar -> {
+                if (progressBar.progress < progressBar.max) {
+                    progressBar.progress = progressBar.progress + 10
+                    tvProgress.text = progressBar.progress.toString() + "%"
+                } else {
+                    progressBar.progress = 0
+                    tvProgress.text = progressBar.progress.toString() + "%"
+                }
+            }
+
+            R.id.btnImageView -> {
+                if (ivImage.tag == 1) {
+                    ivImage.setImageResource(R.drawable.img_2)
+                    ivImage.tag = 2
+                } else {
+                    ivImage.setImageResource(R.drawable.img_1)
+                    ivImage.tag = 1
+                }
+            }
+        }
     }
 
     /**
@@ -73,8 +108,42 @@ class StudyActivity : BaseActivity() {
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.add_item -> Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
-            R.id.remove_item -> Toast.makeText(this, "Remove", Toast.LENGTH_SHORT).show()
+            R.id.add_item -> {
+                Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
+
+                val dialog = androidx.appcompat.app.AlertDialog.Builder(this).run {
+                    setTitle("系统Menu")
+                    setMessage("增加选项1")
+                    setCancelable(false)
+                    setPositiveButton("确定") { dialog, which ->
+                        dialog.dismiss()
+                        etContentOne.text = Editable.Factory.getInstance().newEditable("丁程鑫")
+                    }
+                    setNegativeButton("取消") { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    create()
+                }
+                dialog.show()
+            }
+            R.id.remove_item -> {
+                Toast.makeText(this, "Remove", Toast.LENGTH_SHORT).show()
+
+                val dialog = androidx.appcompat.app.AlertDialog.Builder(this).run {
+                    setTitle("系统Menu")
+                    setMessage("增加选项2")
+                    setCancelable(false)
+                    setPositiveButton("确定") { dialog, which ->
+                        dialog.dismiss()
+                        etContentTwo.text = Editable.Factory.getInstance().newEditable("马嘉琪")
+                    }
+                    setNegativeButton("取消") { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    create()
+                }
+                dialog.show()
+            }
         }
         return true
     }
@@ -91,39 +160,39 @@ class StudyActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d(tag,"执行onStart()")
+        Log.d(tag, "执行onStart()")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(tag,"执行onResume()")
+        Log.d(tag, "执行onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d(tag,"执行onPause()")
+        Log.d(tag, "执行onPause()")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d(tag,"执行onStop()")
+        Log.d(tag, "执行onStop()")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(tag,"执行onDestroy()")
+        Log.d(tag, "执行onDestroy()")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d(tag,"执行onRestart()")
+        Log.d(tag, "执行onRestart()")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         val tempData = "onSaveInstanceState"
-        outState.putString("data_key",tempData)
-        Log.d(tag,"执行onSaveInstanceState()")
+        outState.putString("data_key", tempData)
+        Log.d(tag, "执行onSaveInstanceState()")
     }
 
 }
