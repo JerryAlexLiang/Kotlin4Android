@@ -2,7 +2,7 @@ package com.liang.kotlin4android.widget_02
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
 import kotlinx.android.synthetic.main.activity_list_view.*
 
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_list_view.*
  * 描述: ListView
  * 作者: liangyang
  */
-class ListViewActivity : AppCompatActivity() {
+class ListViewActivity : BaseActivity() {
 
     private val fruitList = ArrayList<Fruit>()
 
