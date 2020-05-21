@@ -17,6 +17,10 @@ import kotlinx.android.synthetic.main.lv_fruit_item.view.*
  */
 class FruitLvAdapter(context: Context, fruitList: List<Fruit>) : BaseAdapter() {
 
+    //1、Kotlin中类的构造函数可以直接写在类名的后面
+    //2、Kotlin中继承extends的使用  :
+    //3、初始化可以放在init中进行
+
     var dataList: List<Fruit>? = null
     private var context: Context
 
@@ -25,6 +29,9 @@ class FruitLvAdapter(context: Context, fruitList: List<Fruit>) : BaseAdapter() {
         this.context = context
     }
 
+    /**
+     * 6、使用Kotlin时，不能直接使用convertView，因为在Kotlin中val对象是只可读的
+     */
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View
         val viewHolder: MyViewHolder
@@ -54,10 +61,14 @@ class FruitLvAdapter(context: Context, fruitList: List<Fruit>) : BaseAdapter() {
         return position.toLong()
     }
 
+    //5、方法名像JavaScript一样使用  fun 方法名() : 返回类型{}
     override fun getItem(position: Int): Any {
         return this.dataList!![position]
     }
 
+    /**
+     * 4、内部函数前可加inner关键字，标明内部函数
+     */
     inner class MyViewHolder(view: View) {
 
         var ivFruit: ImageView? = null

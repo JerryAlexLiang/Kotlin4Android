@@ -50,6 +50,10 @@ class MainRvAdapter(private val fruitList: List<Fruit>, private val resourceId: 
         holder.itemView.setOnClickListener {
             itemClickListener!!.onItemClickListener(holder.itemView, position)
         }
+
+        holder.itemView.setOnLongClickListener {
+            itemClickListener!!.onItemLongClickListener(position)
+        }
     }
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -70,6 +74,9 @@ class MainRvAdapter(private val fruitList: List<Fruit>, private val resourceId: 
     //自定义接口
     interface IKotlinItemClickListener {
         fun onItemClickListener(view: View, position: Int)
+
+        fun onItemLongClickListener(position: Int): Boolean
+
     }
 
 }

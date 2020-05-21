@@ -2,14 +2,15 @@ package com.liang.kotlin4android
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.liang.kotlin4android.activity_01.StudyActivity
+import com.liang.kotlin4android.viewpager_03.TabViewPagerActivityActivity
 import com.liang.kotlin4android.widget_02.Fruit
 import com.liang.kotlin4android.widget_02.ListViewActivity
 import com.liang.kotlin4android.widget_02.RecyclerViewActivity
 import kotlinx.android.synthetic.main.activity_recycler_view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 /**
@@ -73,6 +74,8 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
 
             2 -> RecyclerViewActivity.actionStart(this)
 
+            3 -> startActivity<TabViewPagerActivityActivity>() //auto
+
             else -> {
 //                Toast.makeText(this, "点击了: ${fruitList[position].name}", Toast.LENGTH_SHORT)
 //                    .show()
@@ -81,11 +84,16 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
         }
     }
 
+    override fun onItemLongClickListener(position: Int): Boolean {
+        toast("点击了: $position + ${fruitList[position].name}")
+        return true
+    }
+
     private fun initData() {
         fruitList.add(Fruit("基础控件Widget和Activity", R.drawable.apple_pic))
         fruitList.add(Fruit("ListView(BaseAdapter)", R.drawable.banana_pic))
         fruitList.add(Fruit("RecyclerView", R.drawable.orange_pic))
-        fruitList.add(Fruit("西瓜", R.drawable.watermelon_pic))
+        fruitList.add(Fruit("TabLayout + ViewPager + Fragment", R.drawable.watermelon_pic))
         fruitList.add(Fruit("香梨", R.drawable.pear_pic))
         fruitList.add(Fruit("葡萄", R.drawable.grape_pic))
         fruitList.add(Fruit("菠萝", R.drawable.pineapple_pic))
