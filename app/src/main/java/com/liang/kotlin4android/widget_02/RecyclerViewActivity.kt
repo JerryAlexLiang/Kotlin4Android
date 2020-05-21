@@ -1,5 +1,7 @@
 package com.liang.kotlin4android.widget_02
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -14,10 +16,17 @@ import kotlin.collections.ArrayList
 
 /**
  * 创建日期：2020/5/20 on 13:32
- * 描述:
+ * 描述:  RecyclerView
  * 作者: liangyang
  */
 class RecyclerViewActivity : BaseActivity() {
+
+    companion object {
+        fun actionStart(context: Context) {
+            val intent = Intent(context, RecyclerViewActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
@@ -28,7 +37,7 @@ class RecyclerViewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_view)
 
-        title = "recyclerView"
+        title = "RecyclerView"
 
         //初始化数据
         initData()

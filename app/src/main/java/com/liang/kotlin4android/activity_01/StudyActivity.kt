@@ -2,6 +2,7 @@ package com.liang.kotlin4android.activity_01
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -21,13 +22,20 @@ import kotlinx.android.synthetic.main.activity_study.*
  */
 class StudyActivity : BaseActivity(), View.OnClickListener {
 
+    companion object {
+        fun actionStart(context: Context) {
+            val intent = Intent(context, StudyActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
+
     private val tag = StudyActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_study)
 
-        title = "Widget"
+        title = "Widget和Activity"
 
         Log.d(tag, "执行onCreate()")
 

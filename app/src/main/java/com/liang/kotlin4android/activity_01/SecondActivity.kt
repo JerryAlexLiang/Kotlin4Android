@@ -40,6 +40,8 @@ class SecondActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
+        title = "Widget和Activity"
+
         Log.d(tag, "执行onCreate")
 
         //接收传递来的数据

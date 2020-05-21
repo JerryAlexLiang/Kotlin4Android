@@ -1,5 +1,7 @@
 package com.liang.kotlin4android.widget_02
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.liang.kotlin4android.BaseActivity
@@ -12,6 +14,13 @@ import kotlinx.android.synthetic.main.activity_list_view.*
  * 作者: liangyang
  */
 class ListViewActivity : BaseActivity() {
+
+    companion object {
+        fun actionStart(context: Context) {
+            val intent = Intent(context, ListViewActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     private val fruitList = ArrayList<Fruit>()
 
