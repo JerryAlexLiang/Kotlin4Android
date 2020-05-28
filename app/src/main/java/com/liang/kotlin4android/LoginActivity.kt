@@ -18,7 +18,7 @@ class LoginActivity : BaseActivity() {
             val account = etAccount.text.toString()
             val password = etPassword.text.toString()
             // 如果账号是admin且密码是123456，就认为登录成功
-            if (account=="admin" && password=="123456"){
+            if (account=="Jerry" && password=="123456"){
                 startActivity<MainActivity>()
                 finish()
             }else{

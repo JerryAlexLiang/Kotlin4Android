@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.liang.kotlin4android.activity_01.StudyActivity
 import com.liang.kotlin4android.broadcast.BroadcastActivity
+import com.liang.kotlin4android.threadNet.ThreadActivity
 import com.liang.kotlin4android.viewpager_03.TabViewPagerActivityActivity
 import com.liang.kotlin4android.widget_02.Fruit
 import com.liang.kotlin4android.widget_02.ListViewActivity
@@ -79,6 +80,8 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
 
             4 -> startActivity<BroadcastActivity>()
 
+            5 -> startActivity<ThreadActivity>()
+
             else -> {
 //                Toast.makeText(this, "点击了: ${fruitList[position].name}", Toast.LENGTH_SHORT)
 //                    .show()
@@ -98,8 +101,8 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
         fruitList.add(Fruit("RecyclerView", R.drawable.orange_pic))
         fruitList.add(Fruit("TabLayout + ViewPager + Fragment", R.drawable.watermelon_pic))
         fruitList.add(Fruit("BroadcastReceiver", R.drawable.pear_pic))
-        fruitList.add(Fruit("葡萄", R.drawable.grape_pic))
-        fruitList.add(Fruit("菠萝", R.drawable.pineapple_pic))
+        fruitList.add(Fruit("线程Thread", R.drawable.grape_pic))
+        fruitList.add(Fruit("网络请求框架Retrofit", R.drawable.pineapple_pic))
         fruitList.add(Fruit("草莓", R.drawable.strawberry_pic))
         fruitList.add(Fruit("樱桃", R.drawable.cherry_pic))
         fruitList.add(Fruit("芒果", R.drawable.mango_pic))
