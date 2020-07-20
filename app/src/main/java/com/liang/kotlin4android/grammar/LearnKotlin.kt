@@ -95,3 +95,5 @@ fun checkNumber(number: Number) {
         else -> print("number is not support")
     }
 }
+
+//4、循环语句
