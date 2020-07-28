@@ -18,7 +18,33 @@ fun main() {
 //    val score = getScore("丁程鑫")
 //    print("分值: $score")
 
-    checkNumber(10F)
+//    checkNumber(10F)
+
+    //4、循环语句 while循环 for循环 for-i 舍弃  for-each -> for-in
+    //[0,10]
+    for (i in 0..10) {
+        print("打印【0，10】")
+        println("\n" + i)
+    }
+
+    //[0,10)  until
+    for (i in 0 until 10) {
+        print("打印【[0,10)")
+        println("\n" + i)
+    }
+
+    //i = i + 2
+    for (i in 0 until 10 step 2) {
+        print("打印【[0,10) i = i + 2")
+        println("\n" + i)
+    }
+
+    //降序 downTo [10,1]
+    for (i in 10 downTo 1){
+        print("打印 降序 downTo [10,1]")
+        println("\n" + i)
+    }
+
 }
 
 /**
@@ -96,4 +122,4 @@ fun checkNumber(number: Number) {
     }
 }
 
-//4、循环语句
+//4、循环语句 while循环 for循环 for-i 舍弃  for-each -> for-in
