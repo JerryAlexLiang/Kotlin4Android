@@ -22,28 +22,55 @@ fun main() {
 
     //4、循环语句 while循环 for循环 for-i 舍弃  for-each -> for-in
     //[0,10]
-    for (i in 0..10) {
-        print("打印【0，10】")
-        println("\n" + i)
-    }
+//    for (i in 0..10) {
+//        print("打印【0，10】")
+//        println("\n" + i)
+//    }
+//
+//    //[0,10)  until
+//    for (i in 0 until 10) {
+//        print("打印【[0,10)")
+//        println("\n" + i)
+//    }
+//
+//    //i = i + 2
+//    for (i in 0 until 10 step 2) {
+//        print("打印【[0,10) i = i + 2")
+//        println("\n" + i)
+//    }
+//
+//    //降序 downTo [10,1]
+//    for (i in 10 downTo 1){
+//        print("打印 降序 downTo [10,1]")
+//        println("\n" + i)
+//    }
 
-    //[0,10)  until
-    for (i in 0 until 10) {
-        print("打印【[0,10)")
-        println("\n" + i)
-    }
+    //5、类与对象
+//    val person = Person()
+//    person.name = "丁程鑫"
+//    person.age = 18
+//    person.getPerson()
+    val student = Student("001", "高二")
+    student.age = 18
+    student.name = "丁程鑫"
+    student.getStudent()
 
-    //i = i + 2
-    for (i in 0 until 10 step 2) {
-        print("打印【[0,10) i = i + 2")
-        println("\n" + i)
-    }
+    //6、数据类
+    val cellPhone1 = CellPhone("华为", 3999.0)
+    val cellPhone2 = CellPhone("华为", 3999.0)
+    println(cellPhone1)
+    println(cellPhone2)
+    println("cellPhone1 equals cellPhone2   " + (cellPhone1 == cellPhone2))
+    println("""cellPhone1 equals cellPhone2   ${cellPhone1 == cellPhone2}""")
 
-    //降序 downTo [10,1]
-    for (i in 10 downTo 1){
-        print("打印 降序 downTo [10,1]")
-        println("\n" + i)
-    }
+    //7、单例模式
+    //Java写法获取单例类
+    val singletonJava = SingletonJava.getInstance()
+    singletonJava.SingletonJavaTest()
+    //kotlin中调用单例类比较简单，比较类似于Java中静态方法的调用方式：
+    //这种写法虽然看上去像是静态方法的调用，但其实kotlin在背后自动帮我们创建了一个SingletonKotlin类的实例
+    //并且保证全局只会存在一个SingletonKotlin实例
+    SingletonKotlin.singletonKotlinTest()
 
 }
 
