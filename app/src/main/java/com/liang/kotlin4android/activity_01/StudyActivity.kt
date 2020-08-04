@@ -108,6 +108,7 @@ class StudyActivity : BaseActivity(), View.OnClickListener {
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_study, menu)
+        //返回true表示允许创建的菜单显示出来，如果返回false，则创建的菜单将无法显示
         return true
     }
 

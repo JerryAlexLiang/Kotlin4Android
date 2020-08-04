@@ -11,13 +11,19 @@ import com.liang.kotlin4android.constant.Constant
 import com.liang.kotlin4android.utils.ActivityBox
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
-
+/**
+ * 创建日期:2020/8/4 on 7:11 PM
+ * 描述: 继承与实现 在kotlin中，任何一个非抽象类默认都是不可以被继承的，相当于Java中给类声明了final关键字
+ * 在BaseActivity类前面加open关键字--->抽象类--->使之可以被继承
+ * 作者: 杨亮
+ */
 open class BaseActivity : AppCompatActivity() {
 
     private lateinit var receiver: ForceOfflineReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Kotlin中的javaClass表示获取当前实例的Class对象
         Log.d("BaseActivity", javaClass.simpleName)
         ActivityBox.addActivity(this)
     }
