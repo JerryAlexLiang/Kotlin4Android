@@ -16,6 +16,9 @@ class SecondActivity : BaseActivity() {
 
     private val tag = SecondActivity::class.java.simpleName
 
+    /**
+     * 在kotlin中规定，所有定义在companion object语法结构中的方法都可以使用类似于Java中的static静态方法的形式调用
+     */
     companion object {
 
 //        fun actionStart(context: Context, parameter: String) {

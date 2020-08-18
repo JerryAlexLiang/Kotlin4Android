@@ -13,6 +13,9 @@ import android.view.View
 import android.widget.Toast
 import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
+import com.liang.kotlin4android.grammar.KotlinStaticUtil
+import com.liang.kotlin4android.grammar.appendStartsApply
+import com.liang.kotlin4android.utils.ActivityBox
 import kotlinx.android.synthetic.main.activity_study.*
 
 /**
@@ -76,6 +79,18 @@ class StudyActivity : BaseActivity(), View.OnClickListener {
 
         btnProgressBar.setOnClickListener(this)
         btnImageView.setOnClickListener(this)
+
+        btnKotlinJavaStatic.setOnClickListener {
+            JavaActivity.actionStart(this)
+        }
+
+        /**
+         * Kotlin中的静态方法2
+         * 顶层方法：kotlin编译器会将所有的顶层方法全部编译成静态方法
+         * 在kotlin代码中，所有的顶层方法都可以在任何位置被直接调用，不用管包名路径，也不用创建实例，直接键入fun方法即可
+         */
+        val list = listOf("丁程鑫", "马嘉祺", "贺峻霖", "刘耀文", "敖子逸", "李天泽")
+        appendStartsApply(list)
     }
 
     @SuppressLint("SetTextI18n")

@@ -23,6 +23,7 @@
         android:text="Progressbar"
         android:textAllCaps="false" />
 
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -74,4 +75,13 @@
         android:layout_marginTop="10dp"
         android:hint="请输入内容2" />
 
+
+    <Button
+        android:id="@+id/btnKotlinJavaStatic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etContentTwo"
+        android:layout_margin="20dp"
+        android:text="Kotlin中真正的静态方法static"
+        android:textAllCaps="false" />
 </RelativeLayout>
