@@ -1,2 +1,3 @@
+include ':jetpack'
 include ':app'
 rootProject.name='Kotlin4Android'
