@@ -15,13 +15,35 @@
         android:layout_marginEnd="10dp"
         android:hint="请输入内容" />
 
+    <RelativeLayout
+        android:id="@+id/rl_9patch_01"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/et_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/apple_pic">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_9patch_02"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/rl_9patch_01"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/icon_apple_pic">
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/btnJump"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/rl_9patch_02"
         android:text="点击回传"
-        android:layout_centerInParent="true"
         android:textAllCaps="false" />
 
 
@@ -29,8 +51,8 @@
         android:id="@+id/btnExitApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btnJump"
         android:layout_margin="10dp"
-        android:text="退出APP"
-        android:layout_below="@id/btnJump"/>
+        android:text="退出APP" />
 
 </RelativeLayout>

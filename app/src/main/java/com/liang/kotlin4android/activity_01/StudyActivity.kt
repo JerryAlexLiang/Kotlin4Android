@@ -2,6 +2,7 @@ package com.liang.kotlin4android.activity_01
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -135,12 +136,15 @@ class StudyActivity : BaseActivity(), View.OnClickListener {
             R.id.add_item -> {
                 Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
 
+                //kotlin中的标准函数run
                 val dialog = androidx.appcompat.app.AlertDialog.Builder(this).run {
                     setTitle("系统Menu")
                     setMessage("增加选项1")
                     setCancelable(false)
                     setPositiveButton("确定") { dialog, which ->
                         dialog.dismiss()
+                        //在给EditText赋值时使用editText.text = "value"时会提示Type mismatch，这是因为EditText在推断types时出现问题;
+                        //为了避免types不匹配，使用Editable类的Factory内部类，来解决这个问题
                         etContentOne.text = Editable.Factory.getInstance().newEditable("丁程鑫")
                     }
                     setNegativeButton("取消") { dialog, which ->
@@ -153,20 +157,35 @@ class StudyActivity : BaseActivity(), View.OnClickListener {
             R.id.remove_item -> {
                 Toast.makeText(this, "Remove", Toast.LENGTH_SHORT).show()
 
-                val dialog = androidx.appcompat.app.AlertDialog.Builder(this).run {
+//                val dialog = androidx.appcompat.app.AlertDialog.Builder(this).run {
+//                    setTitle("系统Menu")
+//                    setMessage("增加选项2")
+//                    setCancelable(false)
+//                    setPositiveButton("确定") { dialog, which ->
+//                        dialog.dismiss()
+//                        etContentTwo.text = Editable.Factory.getInstance().newEditable("马嘉琪")
+//                    }
+//                    setNegativeButton("取消") { dialog, which ->
+//                        dialog.dismiss()
+//                    }
+//                    create()
+//                }
+//                dialog.show()
+
+                //kotlin中的标准函数apply
+                AlertDialog.Builder(this).apply {
                     setTitle("系统Menu")
                     setMessage("增加选项2")
                     setCancelable(false)
-                    setPositiveButton("确定") { dialog, which ->
+                    setPositiveButton("确定") { dialog, _ ->
                         dialog.dismiss()
                         etContentTwo.text = Editable.Factory.getInstance().newEditable("马嘉琪")
                     }
-                    setNegativeButton("取消") { dialog, which ->
+                    setNegativeButton("取消") { dialog, _ ->
                         dialog.dismiss()
                     }
-                    create()
+                    show()
                 }
-                dialog.show()
             }
         }
         return true

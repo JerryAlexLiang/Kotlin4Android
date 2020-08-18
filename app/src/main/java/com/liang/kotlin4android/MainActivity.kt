@@ -109,5 +109,8 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
 
     }
 
+    override fun onBackPressed() {
+        moveTaskToBack(true)
+    }
 
 }

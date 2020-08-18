@@ -36,6 +36,8 @@ class ListViewActivity : BaseActivity() {
         listView.adapter = adapter
 
 //        listView.setOnItemClickListener { parent, view, position, id ->
+        //kotlin允许将没有使用到的参数使用下划线来替代，也是合法且更加推荐的
+        //注意：即使奖没有用到的参数使用下划线来代替，它们之间的位置是不能改变的，position参数仍然得在第三个参数的位置
         listView.setOnItemClickListener { _, _, position, _ ->
             val fruit = fruitList[position]
             Toast.makeText(this, "点击了: ${fruit.name}", Toast.LENGTH_SHORT).show()
@@ -43,6 +45,7 @@ class ListViewActivity : BaseActivity() {
     }
 
     private fun initData() {
+        //repeat函数式kotlin中的一个非常常用的标准函数，它允许春入一个数值n，然后会把Lambda表达式中的内容执行n遍
         repeat(3) {
             fruitList.add(Fruit("苹果", R.drawable.apple_pic))
             fruitList.add(Fruit("香蕉", R.drawable.banana_pic))

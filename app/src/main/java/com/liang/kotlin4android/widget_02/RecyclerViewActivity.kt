@@ -28,9 +28,13 @@ class RecyclerViewActivity : BaseActivity() {
         }
     }
 
+    //1、对全局变量延迟初始化，使用的是lateinit关键字，它可以告诉kotlin编译器，会在晚些时候对这个变量进行初始化，这样就不用在一开始的时候将它赋值为null了
+    //2、注意：使用lateinit关键字的风险：要确保它在被任何地方调用之前已经完成了初始化工作，否则kotlin将无法保证程序的安全性
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var linearLayoutManager: LinearLayoutManager
+
+    //    private  var linearLayoutManager: LinearLayoutManager? = null
     private val fruitList = ArrayList<Fruit>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +46,12 @@ class RecyclerViewActivity : BaseActivity() {
         //初始化数据
         initData()
 
-        linearLayoutManager = LinearLayoutManager(this)
+//        linearLayoutManager = LinearLayoutManager(this)
+        //3、还可以通过代码来判断一个全局变量是否已经完成了初始化，这样在某些时候能够有效避免重复对某一个变量进行初始化操作
+        //语法：  ::linearLayoutManager.isInitialized 可用于判断linearLayoutManager变量是否已经初始化
+        if (!::linearLayoutManager.isInitialized) {
+            linearLayoutManager = LinearLayoutManager(this)
+        }
         gridLayoutManager = GridLayoutManager(this, 3)
         staggeredGridLayoutManager =
             StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
