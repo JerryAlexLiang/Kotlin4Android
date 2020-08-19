@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_counter.*
 /**
  * 创建日期:2020/8/18 on 3:51 PM
  * 描述: 计数器Demo - 学习JetPack组件集中的ViewModel组件
+ * JetPack组件会在创建项目（AndroidX）的时候自动被包进去，但是，如果想使用ViewModel组件，还需要添加lifecycle依赖
  * 作者: 杨亮
  */
 class CounterActivity : BaseActivity() {

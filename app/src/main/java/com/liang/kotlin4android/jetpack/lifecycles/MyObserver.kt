@@ -22,7 +22,7 @@ import androidx.lifecycle.OnLifecycleEvent
  * lifecycle.currentState返回的生命周期状态是一个枚举类型（5种状态）
  * 作者: 杨亮
  */
-class MyObserver(val lifecycle: Lifecycle) : LifecycleObserver {
+class MyObserver(private val lifecycle: Lifecycle) : LifecycleObserver {
 
     companion object {
         private const val TAG = "MyObserver"
