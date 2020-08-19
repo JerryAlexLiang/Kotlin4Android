@@ -2,6 +2,7 @@ package com.liang.kotlin4android.jetpack.liveData
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 /**
@@ -9,7 +10,7 @@ import androidx.lifecycle.ViewModel
  * 描述: LiveData与ViewModel结合使用
  * 作者: 杨亮
  */
-class LiveDataViewModel(countReserved: Int) : ViewModel() {
+class LiveDataViewModel(countReserved: Int, user: User) : ViewModel() {
 
     /**
      * 1、将counter变量定义为MutableLiveData对象，并指定泛型为Int，表示它包含的是整型数据
@@ -41,7 +42,6 @@ class LiveDataViewModel(countReserved: Int) : ViewModel() {
 //        counter.value = 0
 //    }
 
-
     /**************************************************分割线*******************************************************************/
 
     //优化：
@@ -59,10 +59,6 @@ class LiveDataViewModel(countReserved: Int) : ViewModel() {
     val counter: LiveData<Int>
         get() = _counter
 
-    init {
-        _counter.value = countReserved
-    }
-
     fun plusOne() {
         //先获取_counter中包含的数据赋值改count
         val count = _counter.value ?: 0
@@ -74,4 +70,41 @@ class LiveDataViewModel(countReserved: Int) : ViewModel() {
     fun clear() {
         _counter.value = 0
     }
+
+    /**************************************************分割线*******************************************************************/
+
+    /**
+     * map和switchMap
+     * LiveData为了能够应对各种不同的需求场景，提供了两种转换方法：map()和switchMap()方法
+     *
+     * 1、map()方法：作用是将实际包含数据的LiveData和仅用于观察数据的LiveData进行转换
+     * map()方法接收两个参数：
+     * 第一个参数是原始的LiveData对象；
+     * 第二个参数是一个转换函数，在转换函数里编写具体的转换逻辑
+     */
+
+    //将userLiveData声明为private，以保证数据的封装性，外部使用的时候只要观察userName这个LiveData就可以了
+    private val userLiveData = MutableLiveData<User>()
+
+    //如果在Activity中明确只会显示用户的姓名，而不关心用户的年龄，那么这个时候还将整个User类型的LiveData暴露给外部，就显得不那么合适了
+    //而map()就是专门用于解决这种问题的，它可以将User类型的LiveData自由地转型成任意其他类型的LiveData
+
+    //定义一个userName变量，声明为不可变的LiveData
+    //调用Transformations的map()方法对LiveData的数据类型进行转换
+    //当userLiveData的数据发生变化的时候，map()方法会监听到变化并执行转换函数中的逻辑，然后再将转换之后的数据通知给userName的观察者
+    val userName: LiveData<String> = Transformations.map(userLiveData) { user ->
+        //转换逻辑：将User对象转换成一个只包含用户姓名的字符串
+        "${user.firstName}  ${user.lastname}"
+    }
+
+    fun mapTrans() {
+        val user2 = User("刘耀文", "贺峻霖", 14)
+        userLiveData.value = user2
+    }
+
+    init {
+        _counter.value = countReserved
+        userLiveData.value = user
+    }
+
 }

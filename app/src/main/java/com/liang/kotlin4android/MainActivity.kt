@@ -115,6 +115,7 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
         fruitList.add(Fruit("JetPack组件集合-ViewModel组件", R.drawable.strawberry_pic))
         fruitList.add(Fruit("JetPack组件集合-LifeCycles组件", R.drawable.cherry_pic))
         fruitList.add(Fruit("JetPack组件集合-LiveData响应式编程组件", R.drawable.mango_pic))
+//        fruitList.add(Fruit("LiveData响应式编程组件-转换方法map()、switchMap()", R.drawable.apple_pic))
 
     }
 

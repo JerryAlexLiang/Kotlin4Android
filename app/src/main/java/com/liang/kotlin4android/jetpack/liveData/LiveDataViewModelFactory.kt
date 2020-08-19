@@ -13,7 +13,8 @@ import androidx.lifecycle.ViewModelProvider
  *    需要借助ViewModelProvider.Factory来实现
  * 作者: 杨亮
  */
-class LiveDataViewModelFactory(private val countReserved: Int) : ViewModelProvider.Factory {
+class LiveDataViewModelFactory(private val countReserved: Int, private val user: User) :
+    ViewModelProvider.Factory {
 
     /**
      * 在CounterViewModelFactory的构造函数中也和CounterViewModel一样接收一个countReserved参数；
@@ -23,6 +24,6 @@ class LiveDataViewModelFactory(private val countReserved: Int) : ViewModelProvid
         //（1）、在create()方法中创建了ViewModel的实例，并将countReserved参数传了进去，实现向ViewModel中传递参数
         //（2）、为什么在ViewModelProvider.Factory接口实现的create()中就可以创建ViewModel实例呢？
         // 因为create()方法的执行时机和Activity的生命周期无关，所以不会产生之前提到的问题
-        return LiveDataViewModel(countReserved) as T
+        return LiveDataViewModel(countReserved, user) as T
     }
 }

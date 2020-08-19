@@ -45,6 +45,8 @@ class LiveDataActivity : BaseActivity() {
         sp = getPreferences(Context.MODE_PRIVATE)
         val countReserved = sp.getInt(COUNT_SP, 0)
 
+        val user = User("丁程鑫", "马嘉祺", 18)
+
         //1、绝对不能将Activity的实例传给ViewModel，因为ViewModel的生命周期是长于Activity的，
         // 如果把Activity的实例传给ViewModel，就有可能会因为Activity无法释放而造成内存泄露
 
@@ -61,7 +63,7 @@ class LiveDataActivity : BaseActivity() {
 
         //传参ViewModel，这里of额外传入了CounterViewModelFactory参数，这里将读取到的countReserved传给了CounterViewModelFactory的构造函数
         //注意，这一步是非常重要的，只有用这种写法，才能将计数值最终传给CounterViewModel的构造函数。
-        viewModel = ViewModelProviders.of(this, LiveDataViewModelFactory(countReserved))
+        viewModel = ViewModelProviders.of(this, LiveDataViewModelFactory(countReserved, user))
             .get(LiveDataViewModel::class.java)
 
 
@@ -90,6 +92,16 @@ class LiveDataActivity : BaseActivity() {
         // 在2.2.0版本中加入了对observe()方法的语法扩展，可以使用下面的语法结构的observe()方法
         viewModel.counter.observe(this) { count ->
             tvCounter2.text = count.toString()
+        }
+
+        //LiveData的转换方法 map()方法
+        viewModel.userName.observe(this) { name ->
+            //tvUserName
+            tvUserName.text = name
+        }
+
+        btnLiveDataMap.setOnClickListener {
+            viewModel.mapTrans()
         }
     }
 
