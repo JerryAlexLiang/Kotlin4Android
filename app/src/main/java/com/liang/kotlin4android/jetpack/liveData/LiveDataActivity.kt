@@ -1,11 +1,11 @@
 package com.liang.kotlin4android.jetpack.liveData
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.core.content.edit
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import com.liang.kotlin4android.BaseActivity
@@ -35,6 +35,7 @@ class LiveDataActivity : BaseActivity() {
     private lateinit var sp: SharedPreferences
     private lateinit var viewModel: LiveDataViewModel
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_live_data)
@@ -96,12 +97,25 @@ class LiveDataActivity : BaseActivity() {
 
         //LiveData的转换方法 map()方法
         viewModel.userName.observe(this) { name ->
-            //tvUserName
             tvUserName.text = name
         }
 
         btnLiveDataMap.setOnClickListener {
             viewModel.mapTrans()
+        }
+
+        //LiveData的转换方法 switchMap()方法
+        viewModel.mUser.observe(this) { mUser ->
+            tvUserName.text = mUser.firstName
+        }
+
+        btnLiveDataSwitchMapGetUser.setOnClickListener {
+            val userId = (0..10000).random().toString()
+            viewModel.getUser(userId)
+        }
+
+        viewModel.userName2.observe(this) { name2 ->
+            tvUserName2.text = name2
         }
     }
 
@@ -112,5 +126,15 @@ class LiveDataActivity : BaseActivity() {
             putInt(COUNT_SP, viewModel.counter.value ?: 0)
         }
     }
+
+    /**
+     * 总结：
+     * 1、LiveData之所以能够成为Activity与ViewModel之间通信的桥梁，并且还不会有内存泄漏的风险，靠的就是LifeCycles组件；
+     * 2、LiveData在内部使用了LifeCycles组件来自我感知生命周期的变化，从而可以在Activity销毁的时候及时释放引用，避免产生内存泄漏问题；
+     * 3、另外，由于要减少性能消耗，当Activity处于不可见状态的时候，如果LiveData中的数据发生了变化，是不会通知给观察者的，
+     * 只有当Activity重新恢复可见状态时，才会将数据通知给观察者，而LiveData之所以能够实现这种细节的优化，依靠的还是LifeCycles组件；
+     * 4、一个细节：如果在Activity处于不可见状态的时候，LiveData发生了多次数据变化，当Activity恢复可见状态时，
+     * 只有最新的那份数据才会通知给观察者，前面的数据在这种情况下相当于已经过期了，会被直接丢弃。
+     */
 
 }

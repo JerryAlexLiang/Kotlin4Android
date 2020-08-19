@@ -81,6 +81,16 @@ class LiveDataViewModel(countReserved: Int, user: User) : ViewModel() {
      * map()方法接收两个参数：
      * 第一个参数是原始的LiveData对象；
      * 第二个参数是一个转换函数，在转换函数里编写具体的转换逻辑
+     *
+     * 2、switchMap()方法：
+     * 前面所有的内容都有一个前提：LiveData对象的实例都是在ViewModel中创建的，在实际项目中，很有可能ViewModel中的某个LiveData对象是调用另外的方法获取的
+     * eg: 新建Repository单例类
+     * 使用场景（非常固定，但是在实际项目中更常用）：
+     * 如果ViewModel中的LiveData对象是调用另外的方法获取的，不是在ViewModel中创建的，那么就可以借助switchMap()方法，将这个LiveData对象转换成另一个可观察的LiveData对象
+     *
+     * switchMap()方法接收两个参数：
+     * 第一个参数是传入我们新增的userIdLiveData，switchMap()方法会对它进行观察；
+     * 第二个参数是一个转换函数，注意必须在这个转换函数中返回一个LiveData对象，因为switchMap()方法的工作原理就是将转换函数中返回的LiveData对象转换成里一个可观察的LiveData对象
      */
 
     //将userLiveData声明为private，以保证数据的封装性，外部使用的时候只要观察userName这个LiveData就可以了
@@ -102,9 +112,40 @@ class LiveDataViewModel(countReserved: Int, user: User) : ViewModel() {
         userLiveData.value = user2
     }
 
+
+    /**
+     * switchMap()工作流程梳理
+     * 1、当外部调用ViewModel中的getUser()方法来获取用户数据时，并不会发起任何请求或者函数调用，只会将传入的userId值设置到userIdLiveData当中；
+     * 2、一旦userIdLiveData数据发生变化，那么观察userIdLiveData的switchMap()方法就会执行，并且调用我们编写的转换函数
+     * 3、然后再转换函数中调用外部方法Repository.getUser(useId)获取正正的用户数据；
+     * 4、同时switchMap()方法会将Repository.getUser(useId)方法返回的LiveData对象转换成一个可观察的LiveData对象，对于Activity而言，只要去观察这个LiveData对象就可以了
+     */
+    private val userIdLiveData = MutableLiveData<String>()
+    private val userLiveData2 = MutableLiveData<User>()
+
+    val mUser: LiveData<User> = Transformations.switchMap(userIdLiveData) { useId ->
+        Repository.getUser(useId)
+    }
+
+    val userName2: LiveData<String> = Transformations.map(userLiveData2) { user2 ->
+        "${user2.firstName}  ${user2.lastname}"
+    }
+
+    //在ViewModel中创建一个getUser()方法，去调用Repository单例类的getUser()方法来获取LiveData对象
+    //注意：每次调用getUser()返回的都是一个新的LiveData
+    //使用switchMap()方法观察新的LiveData
+//    fun getUser(userId: String): LiveData<User> {
+//        return Repository.getUser(userId)
+//    }
+    fun getUser(userId: String) {
+        userIdLiveData.value = userId
+        userLiveData2.value = User(userId, userId, 0)
+    }
+
     init {
         _counter.value = countReserved
         userLiveData.value = user
+        userLiveData2.value = mUser.value ?: User("丁程鑫", "马嘉祺", 18)
     }
 
 }
