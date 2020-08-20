@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+//Room插件
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -60,4 +63,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
     //LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha05"
+    //Room依赖库
+    implementation "androidx.room:room-runtime:2.1.0"
+    //由于Room会根据我们在项目中声明的注解来动态生成代码，因为这里一定要使用kapt引入Room的编译时注解库，
+    // 而启用编译时注解功能则一定要先添加kotlin-kapt插件，注意kapt只能在kotlin项目中使用，如果是Java项目的话，使用annotationProcessor即可
+    kapt "androidx.room:room-compiler:2.1.0"
 }

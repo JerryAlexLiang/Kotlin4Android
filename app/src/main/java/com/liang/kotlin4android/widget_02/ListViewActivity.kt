@@ -44,6 +44,10 @@ class ListViewActivity : BaseActivity() {
         }
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
     private fun initData() {
         //repeat函数式kotlin中的一个非常常用的标准函数，它允许春入一个数值n，然后会把Lambda表达式中的内容执行n遍
         repeat(3) {

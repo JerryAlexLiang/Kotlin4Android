@@ -63,6 +63,10 @@ class RecyclerViewActivity : BaseActivity() {
         recyclerView.adapter = adapter
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
     private fun initData() {
         fruitList.clear()
         repeat(3) {

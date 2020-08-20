@@ -104,7 +104,7 @@ class LiveDataViewModel(countReserved: Int, user: User) : ViewModel() {
     //当userLiveData的数据发生变化的时候，map()方法会监听到变化并执行转换函数中的逻辑，然后再将转换之后的数据通知给userName的观察者
     val userName: LiveData<String> = Transformations.map(userLiveData) { user ->
         //转换逻辑：将User对象转换成一个只包含用户姓名的字符串
-        "${user.firstName}  ${user.lastname}"
+        "${user.firstName}  ${user.lastName}"
     }
 
     fun mapTrans() {
@@ -128,7 +128,7 @@ class LiveDataViewModel(countReserved: Int, user: User) : ViewModel() {
     }
 
     val userName2: LiveData<String> = Transformations.map(userLiveData2) { user2 ->
-        "${user2.firstName}  ${user2.lastname}"
+        "${user2.firstName}  ${user2.lastName}"
     }
 
     //在ViewModel中创建一个getUser()方法，去调用Repository单例类的getUser()方法来获取LiveData对象

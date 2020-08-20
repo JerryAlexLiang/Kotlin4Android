@@ -1,91 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_bg"
     android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".jetpack.liveData.LiveDataActivity">
 
-    <TextView
-        android:id="@+id/tvCounter2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="---"
-        android:textColor="#ffffff"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnPlusOne2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/selector_bg_press_color_white"
-        android:text="计数+1"
-        android:textSize="18sp" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnClear2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/selector_bg_press_color_white"
-        android:text="清零"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvCounter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="---"
+            android:textColor="#ffffff"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnLiveDataMap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/selector_bg_press_color_white"
-        android:text="LiveData - 转换方法map()"
-        android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btnPlusOne2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/selector_bg_press_color_white"
+            android:text="计数+1"
+            android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btnLiveDataSwitchMapGetUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/selector_bg_press_color_white"
-        android:text="LiveData - 转换方法switchMap()"
-        android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btnClear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/selector_bg_press_color_white"
+            android:text="清零"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tvUserName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="FirstName"
-        android:textColor="#ffffff"
-        android:textSize="32sp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnLiveDataMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/selector_bg_press_color_white"
+            android:text="LiveData - 转换方法map()"
+            android:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/tvUserName2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="FirstName LastName"
-        android:textColor="#ffffff"
-        android:textSize="32sp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnLiveDataSwitchMapGetUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/selector_bg_press_color_white"
+            android:text="LiveData - 转换方法switchMap()"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="FirstName"
+            android:textColor="#ffffff"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUserName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="FirstName LastName"
+            android:textColor="#ffffff"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -119,6 +119,10 @@ class LiveDataActivity : BaseActivity() {
         }
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
     override fun onPause() {
         super.onPause()
         sp.edit {

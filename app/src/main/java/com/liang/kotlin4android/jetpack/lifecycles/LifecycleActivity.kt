@@ -49,4 +49,8 @@ class LifecycleActivity : BaseActivity() {
 
 
     }
+
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
 }

@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
@@ -49,6 +48,10 @@ class BroadcastActivity : BaseActivity() {
             sendBroadcast(intent)
         }
 
+    }
+
+    override fun isSetTransparencyBar(): Boolean {
+        return false
     }
 
 

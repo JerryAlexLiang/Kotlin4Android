@@ -143,6 +143,10 @@ class ThreadActivity : BaseActivity() {
         }
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
 //    override fun onDestroy() {
 //        super.onDestroy()
 //        handler.removeCallbacksAndMessages(null)

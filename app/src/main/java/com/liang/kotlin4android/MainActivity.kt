@@ -8,6 +8,7 @@ import com.liang.kotlin4android.activity_01.StudyActivity
 import com.liang.kotlin4android.broadcast.BroadcastActivity
 import com.liang.kotlin4android.jetpack.lifecycles.LifecycleActivity
 import com.liang.kotlin4android.jetpack.liveData.LiveDataActivity
+import com.liang.kotlin4android.jetpack.room.RoomBookActivity
 import com.liang.kotlin4android.jetpack.viewModel.CounterActivity
 import com.liang.kotlin4android.threadNet.ThreadActivity
 import com.liang.kotlin4android.viewpager_03.TabViewPagerActivityActivity
@@ -44,6 +45,10 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
 
         //itemClick
         adapter.setOnKotlinItemClickListener(this)
+    }
+
+    override fun isSetTransparencyBar(): Boolean {
+        return false
     }
 
 
@@ -91,6 +96,8 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
 
             9 -> LiveDataActivity.actionStart(this)
 
+            10 -> RoomBookActivity.actionStart(this)
+
             else -> {
 //                Toast.makeText(this, "点击了: ${fruitList[position].name}", Toast.LENGTH_SHORT)
 //                    .show()
@@ -115,7 +122,7 @@ class MainActivity : BaseActivity(), MainRvAdapter.IKotlinItemClickListener {
         fruitList.add(Fruit("JetPack组件集合-ViewModel组件", R.drawable.strawberry_pic))
         fruitList.add(Fruit("JetPack组件集合-LifeCycles组件", R.drawable.cherry_pic))
         fruitList.add(Fruit("JetPack组件集合-LiveData响应式编程组件", R.drawable.mango_pic))
-//        fruitList.add(Fruit("LiveData响应式编程组件-转换方法map()、switchMap()", R.drawable.apple_pic))
+        fruitList.add(Fruit("Room数据库操作", R.drawable.apple_pic))
 
     }
 

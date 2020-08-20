@@ -14,9 +14,7 @@ import android.view.View
 import android.widget.Toast
 import com.liang.kotlin4android.BaseActivity
 import com.liang.kotlin4android.R
-import com.liang.kotlin4android.grammar.KotlinStaticUtil
 import com.liang.kotlin4android.grammar.appendStartsApply
-import com.liang.kotlin4android.utils.ActivityBox
 import kotlinx.android.synthetic.main.activity_study.*
 
 /**
@@ -92,6 +90,10 @@ class StudyActivity : BaseActivity(), View.OnClickListener {
          */
         val list = listOf("丁程鑫", "马嘉祺", "贺峻霖", "刘耀文", "敖子逸", "李天泽")
         appendStartsApply(list)
+    }
+
+    override fun isSetTransparencyBar(): Boolean {
+        return false
     }
 
     @SuppressLint("SetTextI18n")

@@ -83,6 +83,10 @@ class CounterActivity : BaseActivity() {
         }
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
     private fun refreshCounter() {
 //        tvCounter.text = number.toString()
         tvCounter.text = viewModel.counter.toString()

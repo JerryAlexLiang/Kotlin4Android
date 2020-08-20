@@ -34,6 +34,10 @@ class TabViewPagerActivityActivity : BaseActivity() {
         tabLayout.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(viewPager))
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
     private fun initData() {
         //tabLayout
         titleList.add("One")

@@ -72,6 +72,10 @@ class SecondActivity : BaseActivity() {
         }
     }
 
+    override fun isSetTransparencyBar(): Boolean {
+        return false
+    }
+
 //    override fun onBackPressed() {
 //        val toString = et_content.text.toString()
 //        intent.putExtra("data_return", toString)
